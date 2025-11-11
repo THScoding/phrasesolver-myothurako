@@ -19,10 +19,6 @@ public class PhraseSolver {
     player2 = new Player();
     game = new Board();
     solved = false;
-    player1 = null;
-    player2 = null;
-    game = null;
-    solved = false;
   }
 
   public void play() {

@@ -17,7 +17,7 @@ public class Player {
     System.out.println("what is your name?");
     name = sc.nextLine();
     points = 0;
-    System.out.println("welcome" + name + ", to the game");
+    System.out.println("welcome " + name + ", to the game");
   }
 
   public Player(String inputName) {// contructor, uses parameter
