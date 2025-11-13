@@ -29,7 +29,15 @@ public class PhraseSolver {
 
     boolean correct = true;
     while (!solved) {
-
+      Player current;
+      if (currentPlayer == 1) {
+        current = player1;
+      } else {
+        current = player2;
+      }
+      System.out.println("current letter value:" + current.getName());
+      System.out.println("game solved phrase:" + game.getSolvedPhrase());
+      System.out.println("game current letter value:" + game.getCurrentLetterValue());
       /* your code here - game logic */
 
       /* your code here - determine how game ends */
