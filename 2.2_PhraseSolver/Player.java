@@ -34,5 +34,13 @@ public class Player {
   public int getPoints() {
     return points;
   }
+
   /* your code here - mutator(s) */
+  public void addPoints(int value) {
+    points += value;
+  }
+
+  public void setName(String newName) {
+    name = newName;
+  }
 }
