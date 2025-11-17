@@ -27,7 +27,6 @@ public class PhraseSolver {
 
     Scanner input = new Scanner(System.in);
 
-    boolean correct = true;
     // PSUEDO CODE
     // CURRENT = PLAYER1
     // GUESSING ALGORITHM
@@ -44,34 +43,49 @@ public class PhraseSolver {
       } else {
         current = player2;
       }
-      System.out.println("current letter value:" + current.getName());
+      System.out.println("current player:" + current.getName());
       System.out.println("game solved phrase:" + game.getSolvedPhrase());
       System.out.println("game current letter value:" + game.getCurrentLetterValue());
       /* your code here - game logic */
       game.setLetterValue();
 
-      System.out.println("make a guess");
+      System.out.println("make a guess NOW, " + current.getName());
       String guess = input.nextLine();
 
       if (guess.length() == 1) { // checks if guess is a letter guess
-        boolean hit = game.guessLetter(guess);
+        boolean hit = game.guessLetter(guess); // game checks guess if its in the phrase
         if (hit) {
           current.addPoints(game.getCurrentLetterValue()); // adds points to current
-
+          System.out.println("letter found, now " + current.getName() + " has " + current.getPoints());
         }
 
       }
       // IF THE GUESS IS THE FULLY CORRECT
       if (game.isSolved(guess)) {
-        game.setLetterValue();
-        System.out.println("WINNER!!!!!" + current + " IS THE BEST AND THE OTHER PLAYER CANT DO ANYTHING ABOUT IT");
+        current.addPoints(game.getCurrentLetterValue());
+        current.addPoints(game.getCurrentLetterValue()); // BONUS POINTS FOR SOLVING IT.
+        System.out
+            .println("dangggggg the full phrase is solved now." + current.getName() + " has " + current.getPoints());
         solved = true;
       }
+      if (currentPlayer == 1) { // switches after guess
+        currentPlayer = 2;
+      } else {
+        currentPlayer = 1;
+      }
+
     }
 
     /* your code here - determine how game ends */
-    System.out.println(player1 + "'s points totals to " + player1.getPoints());
-    System.out.println(player2 + "'s points totals to " + player2.getPoints());
+    input.close();
+    System.out.println(player1.getName() + "'s points totals to " + player1.getPoints());
+    System.out.println(player2.getName() + "'s points totals to " + player2.getPoints());
+    if (player1.getPoints() > player2.getPoints()) {
+      System.out.println("Therefore, " + player1.getName() + " is clearly superior to " + player2.getName());
+    }
+    if (player2.getPoints() > player1.getPoints()) {
+      System.out.println("Therefore, " + player2.getName() + " is clearly superior to " + player1.getName());
+    }
     solved = true;
   }
 
